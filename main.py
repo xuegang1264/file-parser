@@ -192,11 +192,10 @@ def _run_mineru(file_path: Path, output_dir: Path, output_format: str) -> dict:
     # MinerU 对 doc/docx/ppt 等依赖 LibreOffice 先转 PDF；
     # 若转换失败，CLI 仍可能返回 0 但 content 为空，需要明确报错。
     if not content.strip() and not pages:
-        err_hint = ""
         if result.stderr:
-            err_hint = f"; stderr: {result.stderr[:300]}"
+            logger.error(f"magic-pdf stderr: {result.stderr}")
         raise RuntimeError(
-            f"MinerU 未返回有效内容，可能是依赖缺失（如 LibreOffice）或文件损坏{err_hint}"
+            f"MinerU 未返回有效内容，可能是依赖缺失（如 LibreOffice / pyclipper / OCR 补丁）或文件损坏"
         )
 
     if json_path.exists():

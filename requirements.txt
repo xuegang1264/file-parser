@@ -16,6 +16,7 @@ doclayout_yolo>=0.0.4
 rapid_table>=3.0.0
 ftfy>=6.0.0
 shapely>=2.0.0
+pyclipper>=1.2.0
 
 # Excel direct parsing
 openpyxl>=3.1.0
