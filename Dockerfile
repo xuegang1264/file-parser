@@ -10,6 +10,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
+
+ENV PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
+ENV PIP_TRUSTED_HOST=pypi.tuna.tsinghua.edu.cn
+
 RUN pip install --no-cache-dir -r requirements.txt
 
 # 如需使用 MinerU 的 GPU 加速，可在此安装 paddle / torch 等依赖
@@ -22,4 +26,4 @@ ENV WORK_DIR=/tmp/file-parser
 
 EXPOSE 8000
 
-CMD ["python", "main.py"]
+CMD ["bash", "-c", "python scripts/patch_models_config.py && python main.py"]
