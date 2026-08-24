@@ -29,13 +29,13 @@ RUN fc-cache -fv
 
 COPY requirements.txt .
 
-ENV PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
-ENV PIP_TRUSTED_HOST=pypi.tuna.tsinghua.edu.cn
+# pip 使用阿里云 PyPI 镜像，加速国内下载
+ENV PIP_INDEX_URL=https://mirrors.aliyun.com/pypi/simple/
+ENV PIP_TRUSTED_HOST=mirrors.aliyun.com
 
-RUN pip install --no-cache-dir -r requirements.txt
-
-# 如需使用 MinerU 的 GPU 加速，可在此安装 paddle / torch 等依赖
-# 并映射 GPU 设备。
+# 预装 CPU 版 torch，避免默认下载庞大的 CUDA 依赖（nvidia_cublas 等）
+# torch/torchvision 也走阿里云 PyPI 镜像
+RUN pip install torch torchvision
 
 COPY . .
 
