@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Temporary working directory for parsing
+.temp/
+temp/
+tmp/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Git
+.git/
+.gitignore
+
+# MinerU models (downloaded at runtime, ~14GB)
+models/PDF-Extract-Kit/
+models/PDF-Extract-Kit-1.0/
+models/PDF-Extract-Kit-2.0/
