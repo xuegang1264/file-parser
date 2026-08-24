@@ -2,6 +2,10 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
+# 更换 apt 源为国内镜像，加速系统依赖安装
+RUN sed -i 's|http://deb.debian.org/debian|https://mirrors.aliyun.com/debian|g' /etc/apt/sources.list && \
+    sed -i 's|http://security.debian.org/debian-security|https://mirrors.aliyun.com/debian-security|g' /etc/apt/sources.list
+
 # 安装系统依赖：libmagic 用于 python-magic
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libmagic1 \
