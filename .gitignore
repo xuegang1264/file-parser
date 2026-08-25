@@ -28,8 +28,3 @@ Thumbs.db
 
 # Logs
 *.log
-
-# MinerU models (downloaded at runtime, ~14GB)
-models/PDF-Extract-Kit/
-models/PDF-Extract-Kit-1.0/
-models/PDF-Extract-Kit-2.0/
